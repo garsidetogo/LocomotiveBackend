@@ -2,9 +2,11 @@
 
 namespace ApiBundle\Controller;
 
+use ApiBundle\Services\SteamQueryService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class GameListController extends Controller
 {
@@ -18,15 +20,15 @@ class GameListController extends Controller
     {
         $jsonResponse = new JsonResponse();
 
-        $dataArray = array(
-            "id" => $steamId,
-        );
+        /** @var SteamQueryService $steamQueryService */
+        $steamQueryService = $this->get('steam_query_service');
 
-        $jsonResponse->setContent(json_encode($dataArray));
+        $dataArray = $steamQueryService->querySteam();
 
-        //$jsonResponse->send();
+        $jsonResponse->setData($dataArray);
+        $jsonResponse->setStatusCode(Response::HTTP_OK);
 
-        return $jsonResponse;
+        return $jsonResponse->send();
         //return $this->render('ApiBundle:Default:index.html.twig');
     }
 }
