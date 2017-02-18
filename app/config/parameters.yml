@@ -10,3 +10,4 @@ parameters:
     mailer_user: null
     mailer_password: null
     secret: d8910c066b590cd8407399c2c737178f333df098
+    steam_api_key: ACEEBFD97A0D381638CB4A83587810E2
