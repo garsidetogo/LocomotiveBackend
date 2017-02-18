@@ -48,6 +48,7 @@ class GameListController extends Controller
         $params = array(SteamQueryService::STEAM_ID => $steamId);
         $dataArray = $steamQueryService->querySteam(SteamQueryService::GET_OWNED_GAMES, $params);
 
+        //filter to only unplayed games
         $games = $dataArray["response"]["games"];
         $unplayed = array();
         foreach ($games as $game) {
@@ -55,9 +56,8 @@ class GameListController extends Controller
                 $unplayed[] = $game;
             }
         }
-
         $dataArray["response"]["games"] = $unplayed;
-        
+
         $jsonResponse->setData($dataArray);
         $jsonResponse->setStatusCode(Response::HTTP_OK);
 
