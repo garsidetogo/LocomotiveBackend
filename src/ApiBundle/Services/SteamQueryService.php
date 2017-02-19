@@ -14,6 +14,7 @@ class SteamQueryService
     const GET_GLOBAL_ACHIEVEMENT_PERCENTAGES_FOR_APP = "http://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/";
 
     const STEAM_ID = "steamid";
+    const INCLUDE_APPINFO = "include_appinfo";
 
     /** @var string @apiKey */
     private $apiKey;

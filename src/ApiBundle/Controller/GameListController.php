@@ -23,7 +23,7 @@ class GameListController extends Controller
         /** @var SteamQueryService $steamQueryService */
         $steamQueryService = $this->get('steam_query_service');
 
-        $params = array(SteamQueryService::STEAM_ID => $steamId);
+        $params = array(SteamQueryService::STEAM_ID => $steamId, SteamQueryService::INCLUDE_APPINFO => "1");
         $dataArray = $steamQueryService->querySteam(SteamQueryService::GET_OWNED_GAMES, $params);
 
         $jsonResponse->setData($dataArray);
