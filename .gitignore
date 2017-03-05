@@ -19,3 +19,4 @@
 /var/logs/*
 /vendor/*
 ./vendor/*
+/vendor/composer/*
