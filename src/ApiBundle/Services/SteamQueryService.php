@@ -20,6 +20,7 @@ class SteamQueryService
     const GET_GLOBAL_STATS_FOR_GAME = "http://api.steampowered.com/ISteamUserStats/GetGlobalStatsForGame/v0001/";
 
     const STEAM_ID = "steamid";
+    const STEAM_IDS = "steamids";
     const APP_ID = "appid";
     const GAME_ID = "gameid";
     const LANGUAGE = "l";
@@ -73,16 +74,8 @@ class SteamQueryService
      * @return string
      */
     private function createQueryUrl($url, $params) {
-        //todo logic for applying params to url
         $resultUrl = $url."?key=".$this->apiKey;
-        $i = 0;
         foreach ($params as $key => $val) {
-            /*if ($i > 0) {
-                $resultUrl .= "&".$key."=".$val;
-            } else {
-                $resultUrl .= "?".$key."=".$val;
-            }*/
-
             $resultUrl .= "&".$key."=".$val;
         }
         $resultUrl .= "&format=json";
