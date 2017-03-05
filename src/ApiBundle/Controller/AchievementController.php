@@ -29,7 +29,7 @@ class AchievementController extends Controller
      *
      * @return JsonResponse
      */
-    public function gameListIndexAction($appId)
+    public function achievementAction($appId)
     {
         $jsonResponse = new JsonResponse();
 
