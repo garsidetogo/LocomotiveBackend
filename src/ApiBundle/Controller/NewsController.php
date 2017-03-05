@@ -6,25 +6,36 @@ use ApiBundle\Services\SteamQueryService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class GameListController extends Controller
+class NewsController extends Controller
 {
     /**
-     * @Route("/gamelist/{steamId}")
-     * @param integer $steamId
+     * @Route("/news/{appId}/")
+     * @param integer $appId
+     * @param Request $request
      *
      * @return JsonResponse
      */
-    public function gameListIndexAction($steamId)
+    public function newsAction($appId, Request $request)
     {
+        //deafaults overwritten by request if present
+        $request->get("count") ? $count = $request->get("count") : $count = 3;
+        $request->get("maxlength") ? $maxLength = $request->get("maxlength") : $maxLength = 1000;
+
         $jsonResponse = new JsonResponse();
 
         /** @var SteamQueryService $steamQueryService */
         $steamQueryService = $this->get('steam_query_service');
 
-        $params = array(SteamQueryService::STEAM_ID => $steamId, SteamQueryService::INCLUDE_APPINFO => "1");
-        $dataArray = $steamQueryService->querySteam(SteamQueryService::GET_OWNED_GAMES, $params);
+        $params = array(
+            SteamQueryService::APP_ID => $appId,
+            SteamQueryService::COUNT => $count,
+            SteamQueryService::MAX_LENGTH => $maxLength,
+        );
+
+        $dataArray = $steamQueryService->querySteam(SteamQueryService::GET_NEWS_FOR_APP, $params);
 
         $jsonResponse->setData($dataArray);
         $jsonResponse->setStatusCode(Response::HTTP_OK);
