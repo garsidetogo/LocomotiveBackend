@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 class GameSchemaController extends Controller
 {
     /**
-     * @Route("/schema/{appId}")
+     * @Route("/schema/{appId}/")
      * @param integer $appId
      *
      * @ApiDoc(
