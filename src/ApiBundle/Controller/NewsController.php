@@ -3,6 +3,7 @@
 namespace ApiBundle\Controller;
 
 use ApiBundle\Services\SteamQueryService;
+use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -15,6 +16,30 @@ class NewsController extends Controller
      * @Route("/news/{appId}/")
      * @param integer $appId
      * @param Request $request
+     *
+     * @ApiDoc(
+     *     description="Retrieve latest news for a game.",
+     *     requirements={
+     *      {
+     *          "name"="appId",
+     *          "dataType"="integer",
+     *          "requirement"="/{appId}/",
+     *          "description"="AppId of the game in question."
+     *      },
+     *      {
+     *          "name"="count",
+     *          "dataType"="integer",
+     *          "requirement"="?count=",
+     *          "description"="Count of articles to return."
+     *      },
+     *      {
+     *          "name"="maxlength",
+     *          "dataType"="integer",
+     *          "requirement"="?maxlength=",
+     *          "description"="Length of article description to return."
+     *      },
+     *     }
+     * )
      *
      * @return JsonResponse
      */

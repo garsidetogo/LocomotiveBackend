@@ -20,3 +20,4 @@ parameters:
 
     #SteamStuff
     steam_api_key:     abc123
+    mock_steam_id:     76561197994160252

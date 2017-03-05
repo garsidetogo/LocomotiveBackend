@@ -5,14 +5,27 @@ namespace ApiBundle\Controller;
 use ApiBundle\Services\SteamQueryService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class GlobalAchievementsController extends Controller
 {
     /**
-     * @Route("/globalachievements/{appId}")
+     * @Route("/globalachievements/{appId}/")
      * @param integer $appId
+     *
+     * @ApiDoc(
+     *     description="Retrieve global achievements stats for a game.",
+     *     requirements={
+     *      {
+     *          "name"="appId",
+     *          "dataType"="integer",
+     *          "requirement"="/{appId}/",
+     *          "description"="AppId of the game in question."
+     *      }
+     *     }
+     * )
      *
      * @return JsonResponse
      */

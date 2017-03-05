@@ -5,6 +5,7 @@ namespace ApiBundle\Controller;
 use ApiBundle\Services\SteamQueryService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -12,6 +13,10 @@ class BansController extends Controller
 {
     /**
      * @Route("/bans/")
+     *
+     * @ApiDoc(
+     *     description="Retrieve player bans."
+     * )
      *
      * @return JsonResponse
      */

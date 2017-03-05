@@ -5,14 +5,27 @@ namespace ApiBundle\Controller;
 use ApiBundle\Services\SteamQueryService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class GameListController extends Controller
 {
     /**
-     * @Route("/gamelist/{steamId}")
+     * @Route("/gamelist/{steamId}/")
      * @param integer $steamId
+     *
+     * @ApiDoc(
+     *     description="Retrieve list of games a user owns.",
+     *     requirements={
+     *      {
+     *          "name"="steamId",
+     *          "dataType"="integer",
+     *          "requirement"="/{steamId}/",
+     *          "description"="SteamID of the user."
+     *      }
+     *     }
+     * )
      *
      * @return JsonResponse
      */
@@ -22,6 +35,8 @@ class GameListController extends Controller
 
         /** @var SteamQueryService $steamQueryService */
         $steamQueryService = $this->get('steam_query_service');
+
+        $steamId = $this->getParameter("mock_steam_id");
 
         $params = array(SteamQueryService::STEAM_ID => $steamId, SteamQueryService::INCLUDE_APPINFO => "1");
         $dataArray = $steamQueryService->querySteam(SteamQueryService::GET_OWNED_GAMES, $params);

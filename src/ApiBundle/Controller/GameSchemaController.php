@@ -5,6 +5,7 @@ namespace ApiBundle\Controller;
 use ApiBundle\Services\SteamQueryService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -13,6 +14,18 @@ class GameSchemaController extends Controller
     /**
      * @Route("/schema/{appId}")
      * @param integer $appId
+     *
+     * @ApiDoc(
+     *     description="Retrieve achievement and statistics schema for a game.",
+     *     requirements={
+     *      {
+     *          "name"="appId",
+     *          "dataType"="integer",
+     *          "requirement"="/{appId}/",
+     *          "description"="AppId of the game in question."
+     *      }
+     *     }
+     * )
      *
      * @return JsonResponse
      */
