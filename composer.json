@@ -30,7 +30,8 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "twig/twig": "^1.0||^2.0",
         "guzzlehttp/guzzle": "^6.2",
-        "nelmio/api-doc-bundle": "^2.13"
+        "nelmio/api-doc-bundle": "^2.13",
+        "fabpot/goutte": "^3.2"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
