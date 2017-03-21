@@ -34,6 +34,15 @@ class LocomotiveScratchCommand extends ContainerAwareCommand
         $client = new Client();
         /** @var Crawler $crawler */
         $crawler = $client->request('GET', $queryUrl);
+
+        if ($crawler->getUri() == "http://store.steampowered.com/agecheck/app/$appId/") {
+            echo "Automating Age Check...\n";
+            $form = $crawler->filter('#agecheck_form')->form();
+            $form['ageYear'] = 1900;
+
+            $crawler = $client->submit($form);
+        }
+
         /** @var $node */
         $crawler->filter('.popular_tags > a')->each(function($node) {
             $this->tags[] = trim($node->text());
