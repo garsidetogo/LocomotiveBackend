@@ -1,3 +1,8 @@
+model:
+    resource: "@ModelBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 engine:
     resource: "@EngineBundle/Controller/"
     type:     annotation
