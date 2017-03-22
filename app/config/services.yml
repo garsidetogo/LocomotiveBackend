@@ -10,3 +10,6 @@ services:
     steam_query_service:
         class: ApiBundle\Services\SteamQueryService
         arguments: [%steam_api_key%]
+
+    app_tag_scraper_consumer:
+        class: EngineBundle\Consumer\AppTagScraperConsumer

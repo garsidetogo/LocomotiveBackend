@@ -16,9 +16,6 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class LocomotiveScratchCommand extends ContainerAwareCommand
 {
-    /** @var array $tags */
-    private $tags;
-
     protected function configure()
     {
         $this
@@ -32,37 +29,16 @@ class LocomotiveScratchCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $appId = $input->getArgument('appId');
-        $queryUrl = "http://store.steampowered.com/app/$appId/";
-
-        /** @var Client $client */
-        //$client = new Client();
-        /** @var Crawler $crawler */
-        //$crawler = $client->request('GET', $queryUrl);
-
-        /*if ($crawler->getUri() == "http://store.steampowered.com/agecheck/app/$appId/") {
-            echo "Automating Age Check...\n";
-            $form = $crawler->filter('#agecheck_form')->form();
-            $form['ageYear'] = 1900;
-
-            $crawler = $client->submit($form);
-        }*/
-
-        /** @var $node */
-        /*$crawler->filter('.popular_tags > a')->each(function($node) {
-            $this->tags[] = trim($node->text());
-        });*/
-
-        //print_r($this->tags);
-
         /** @var DocumentManager $dm */
         $dm = $this->getContainer()->get('doctrine_mongodb')->getManager();
 
-        /*$app = new App();
+        $app = new App();
         $app->setAppId($appId);
+        //todo make name unique id
         $app->setName("Temp");
 
         $dm->persist($app);
-        $dm->flush();*/
+        $dm->flush();
 
         /** @var AppRepository $repo */
         $repo = $dm->getRepository("ModelBundle:App");

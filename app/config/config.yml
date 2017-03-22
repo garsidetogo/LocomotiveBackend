@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: rabbitmq.yml }
     - { resource: "@ApiBundle/Resources/config/services.yml" }
     - { resource: "@EngineBundle/Resources/config/services.yml" }
     - { resource: "@ModelBundle/Resources/config/services.yml" }
