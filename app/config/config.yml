@@ -74,6 +74,14 @@ doctrine_mongodb:
         default:
             auto_mapping: true
 
+stof_doctrine_extensions:
+    default_locale: en_US
+    orm:
+        default: ~
+    mongodb:
+        default:
+            timestampable: true
+
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"

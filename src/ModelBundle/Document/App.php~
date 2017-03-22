@@ -1,0 +1,29 @@
+<?php
+
+namespace ModelBundle\Document;
+
+use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+
+/**
+ * Class App
+ * @package ModelBundle\Document
+ * @MongoDB\Document
+ */
+class App
+{
+    /**
+     * @MongoDB\Id
+     */
+    protected $id;
+
+    /**
+     * @MongoDB\Field(type="int")
+     */
+    protected $appId;
+
+    /**
+     * @MongoDB\Field(type="string")
+     */
+    protected $name;
+}
+
