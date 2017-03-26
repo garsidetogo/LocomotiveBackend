@@ -14,6 +14,10 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\DomCrawler\Crawler;
 
+/**
+ * Class LocomotiveScratchCommand
+ * @package EngineBundle\Command
+ */
 class LocomotiveScratchCommand extends ContainerAwareCommand
 {
     protected function configure()
@@ -22,8 +26,7 @@ class LocomotiveScratchCommand extends ContainerAwareCommand
             ->setName('locomotive:scratch-command')
             ->setDescription('...')
             ->addArgument('appId', InputArgument::OPTIONAL, 'Argument description')
-            ->addOption('option', null, InputOption::VALUE_NONE, 'Option description')
-        ;
+            ->addOption('option', null, InputOption::VALUE_NONE, 'Option description');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

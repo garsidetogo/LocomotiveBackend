@@ -7,16 +7,27 @@ use OldSound\RabbitMqBundle\RabbitMq\ConsumerInterface;
 use PhpAmqpLib\Message\AMQPMessage;
 use Symfony\Component\DomCrawler\Crawler;
 
+/**
+ * Class AppTagScraperConsumer
+ * @package EngineBundle\Consumer
+ */
 class AppTagScraperConsumer implements ConsumerInterface
 {
     /** @var array $tags */
     private $tags;
 
+    /**
+     * AppTagScraperConsumer constructor.
+     */
     public function __construct()
     {
         echo "Started...";
     }
 
+    /**
+     * @param AMQPMessage $msg
+     * @return bool
+     */
     public function execute(AMQPMessage $msg)
     {
         //Process picture upload.
@@ -44,11 +55,13 @@ class AppTagScraperConsumer implements ConsumerInterface
             }
 
             /** @var $node */
-            $crawler->filter('.popular_tags > a')->each(function($node) {
+            $crawler->filter('.popular_tags > a')->each(function ($node) {
                 $this->tags[] = trim($node->text());
             });
 
             print_r($this->tags);
         }
+
+        return true;
     }
 }
