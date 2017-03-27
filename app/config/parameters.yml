@@ -13,3 +13,7 @@ parameters:
     steam_api_key: ACEEBFD97A0D381638CB4A83587810E2
     mock_steam_id: 76561197994160252
     mongodb_server: 'mongodb://localhost:27017'
+    rabbitmq_host: '127.0.0.1'
+    rabbitmq_port: 5672
+    rabbitmq_user: locomotive
+    rabbitmq_password: gRFAB9JDnXlW

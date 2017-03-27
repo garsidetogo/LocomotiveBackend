@@ -22,3 +22,9 @@ parameters:
     #SteamStuff
     steam_api_key:     abc123
     mock_steam_id:     76561197994160252
+
+    #rabbit
+    rabbitmq_host: '127.0.0.1'
+    rabbitmq_port: 5672
+    rabbitmq_user: locomotive
+    rabbitmq_password: gRFAB9JDnXlW
