@@ -20,3 +20,12 @@
 /vendor/*
 ./vendor/*
 /vendor/composer/*
+/app/autoload.php
+app/autoload.php
+composer.lock
+./composer.lock
+var/bootstrap.php.cache
+/var/bootstrap.php.cache
+
+
+

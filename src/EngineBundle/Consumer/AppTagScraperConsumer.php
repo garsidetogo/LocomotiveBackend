@@ -35,10 +35,13 @@ class AppTagScraperConsumer implements ConsumerInterface
         if ($msg == null) {
             //log message null
         } else {
-            $data = $msg->body;
-            //data will be AppId
+            //grab msg data
+            $data = json_decode($msg->body, true);
+            $type = $data["type"];
+            $contentType = $data["contentType"];
+            $appId = $data["appId"];
 
-            $appId = 440900;
+            //build query url based off of appId
             $queryUrl = "http://store.steampowered.com/app/$appId/";
 
             /** @var Client $client */
@@ -60,6 +63,7 @@ class AppTagScraperConsumer implements ConsumerInterface
             });
 
             print_r($this->tags);
+            $this->tags = array();
         }
 
         return true;

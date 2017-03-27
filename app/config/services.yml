@@ -13,3 +13,7 @@ services:
 
     app_tag_scraper_consumer:
         class: EngineBundle\Consumer\AppTagScraperConsumer
+
+    rabbitmq_utilities:
+        class: Utilities\RabbitMQUtilities
+        arguments: ['@service_container']

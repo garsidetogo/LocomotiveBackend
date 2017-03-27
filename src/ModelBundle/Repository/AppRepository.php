@@ -12,11 +12,23 @@ use Doctrine\ODM\MongoDB\DocumentRepository;
  */
 class AppRepository extends DocumentRepository
 {
+    /**
+     * @return mixed
+     */
     public function findAllOrderedByName()
     {
         return $this->createQueryBuilder()
             ->sort('name', 'ASC')
             ->getQuery()
             ->execute();
+    }
+
+    /**
+     * @param int $appId
+     * @return mixed
+     */
+    public function findOneByAppId($appId)
+    {
+        return $this->createQueryBuilder()->field("appId")->equals($appId)->getQuery()->getSingleResult();
     }
 }

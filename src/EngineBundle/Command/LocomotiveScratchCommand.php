@@ -13,6 +13,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\DomCrawler\Crawler;
+use Utilities\RabbitMQUtilities;
 
 /**
  * Class LocomotiveScratchCommand
@@ -35,13 +36,20 @@ class LocomotiveScratchCommand extends ContainerAwareCommand
         /** @var DocumentManager $dm */
         $dm = $this->getContainer()->get('doctrine_mongodb')->getManager();
 
-        $app = new App();
-        $app->setAppId($appId);
-        //todo make name unique id
-        $app->setName("Temp");
+        /** @var RabbitMQUtilities $rabbitUtils */
+        $rabbitUtils = $this->getContainer()->get("rabbitmq_utilities");
 
-        $dm->persist($app);
-        $dm->flush();
+        /*$temp = array("yes" => "okay");
+        $jsonData = json_encode($temp, JSON_PRETTY_PRINT);
+        $rabbitUtils->sendMessage("AppTagScraperConsumer", "new", "App", $jsonData);*/
+
+        //$app = new App();
+        //$app->setAppId($appId);
+        //todo make name unique id
+        //$app->setName("Temp");
+
+        //$dm->persist($app);
+        //$dm->flush();
 
         /** @var AppRepository $repo */
         $repo = $dm->getRepository("ModelBundle:App");
@@ -51,5 +59,5 @@ class LocomotiveScratchCommand extends ContainerAwareCommand
             print_r($doc);
         }
     }
-
 }
+

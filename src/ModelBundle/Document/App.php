@@ -45,6 +45,7 @@ class App
     public function setAppId($appId)
     {
         $this->appId = $appId;
+
         return $this;
     }
 
@@ -67,6 +68,7 @@ class App
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
