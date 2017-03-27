@@ -58,7 +58,7 @@ class AppTagScraperConsumer implements ConsumerInterface
             }
 
             /** @var $node */
-            $crawler->filter('.popular_tags > a')->each(function ($node) {
+            $crawler->filter('.popular_tags > a')->each(function (Crawler $node) {
                 $this->tags[] = trim($node->text());
             });
 
